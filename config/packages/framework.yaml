@@ -18,6 +18,8 @@ framework:
     php_errors:
         log: true
 
+    translator: { fallbacks: [ 'ru' ] }
+
 when@test:
     framework:
         test: true
