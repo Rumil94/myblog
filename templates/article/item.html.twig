@@ -1,9 +1,18 @@
 {% set article_show = path('article_show', { 'slug': article.slug }) %}
 
-<div class="blog-post">
-    <h2 class="blog-post-title"><a class="text-decoration-none" href="{{ article_show }}">{{ article.title }}</a></h2>
-    <p class="blog-post-meta">{{ article.createdAt|date('d.m.Y') }}</p>
+<article>
+    <div class="row">
+        <div class="col-md-{{ leftCol ?? 4 }}">
+            {% if article.featuredImage %}
+                <p>Картинка</p>
+            {% endif %}
+        </div>
+        <div class="col-md-{{ rightCol ?? 8 }} mb-3">
+            <h2 class="blog-post-title"><a class="text-decoration-none" href="{{ article_show }}">{{ article.title }}</a></h2>
+            <p class="blog-post-meta">{{ article.createdAt|date('d.m.Y') }}</p>
 
-    {{ article.featuredText ?: article.content|striptags|slice(0, 130) ~ '...'}}
-    <hr>
-</div>
+            {{ article.featuredText ?: article.content|striptags|slice(0, 130) ~ '...'}}
+        </div>
+        <hr>
+    </div>
+</article>

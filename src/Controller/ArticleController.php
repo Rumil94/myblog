@@ -15,7 +15,7 @@ class ArticleController extends AbstractController
         if (!$article) {
             return $this->redirectToRoute('app_home');
         }
-        return $this->render('article/item.html.twig', [
+        return $this->render('article/show.html.twig', [
             'article' => $article,
         ]);
     }

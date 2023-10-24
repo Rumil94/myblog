@@ -1,9 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Главная{% endblock %}
 
 {% block body %}
     <main class="container">
+        <div class="row mb-2">
+            {{ include('widget/main-article.html.twig') }}
+        </div>
+        <div class="row mb-2">
+            {{ include('widget/popular-articles.html.twig') }}
+        </div>
         <div class="row">
             <div class="col-md-8">
                 <h3 class="pb-4 mb-4 fst-italic border-bottom">
