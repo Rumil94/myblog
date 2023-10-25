@@ -2,7 +2,7 @@
 
 namespace App\Admin;
 
-use App\Entity\{ Category, Article };
+use App\Entity\{ Category };
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -10,7 +10,6 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -64,7 +63,10 @@ final class ArticleAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagrid): void
     {
-        $datagrid->add('title');
+        $datagrid
+            ->add('title', null, [], [
+                'label' => self::NAME_LABEL
+            ]);
     }
 
     protected function configureListFields(ListMapper $list): void
