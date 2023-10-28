@@ -10,8 +10,8 @@
         <div class="col-md-{{ rightCol ?? 8 }} mb-3">
             <h2 class="blog-post-title"><a class="text-decoration-none" href="{{ article_show }}">{{ article.title }}</a></h2>
             <p class="blog-post-meta">{{ article.createdAt|date('d.m.Y') }}</p>
-
-            {{ article.featuredText ?: article.content|striptags|slice(0, 130) ~ '...'}}
+            <p>{{ article.featuredText ?: article.content|striptags|slice(0, 130) ~ '...'}}</p>
+            <p style="float: right; color: #BCBCBC;">Комментрий: ({{ article.comments|length }})</p>
         </div>
         <hr>
     </div>
