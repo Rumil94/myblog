@@ -2,6 +2,7 @@
 
 namespace App\Admin;
 
+use App\Entity\Article;
 use App\Entity\User;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -16,6 +17,7 @@ final class CommentAdmin extends AbstractAdmin
     private const CONTENT_LABEL = 'Содержание';
     private const CREATED_AT_LABEL = 'Дата создания';
     private const USER_LABEL = 'Пользователь';
+    private const ARTICLE_LABEL = 'Статья';
 
     protected function configureFormFields(FormMapper $form): void
     {
@@ -29,6 +31,13 @@ final class CommentAdmin extends AbstractAdmin
                 'expanded' => false,
                 'by_reference' => false,
                 'label' => self::USER_LABEL
+            ])
+            ->add('article', EntityType::class, [
+                'class' => Article::class,
+                'multiple' => false,
+                'expanded' => false,
+                'by_reference' => false,
+                'label' => self::ARTICLE_LABEL
             ]);
     }
 
@@ -48,6 +57,14 @@ final class CommentAdmin extends AbstractAdmin
             ])
             ->add('createdAt', null, [
                 'label' => self::CREATED_AT_LABEL
+            ])
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+                'label' => self::USER_LABEL
+            ])
+            ->add('article', EntityType::class,[
+                'class' => Article::class,
+                'label' => self::ARTICLE_LABEL
             ]);
     }
 
@@ -59,6 +76,14 @@ final class CommentAdmin extends AbstractAdmin
             ])
             ->add('createdAt', null, [
                 'label' => self::CREATED_AT_LABEL
+            ])
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+                'label' => self::USER_LABEL
+            ])
+            ->add('article', EntityType::class,[
+                'class' => Article::class,
+                'label' => self::ARTICLE_LABEL
             ]);
     }
 }
