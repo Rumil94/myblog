@@ -27,7 +27,7 @@ class CommentController extends AbstractController
         if (!$article) {
             return  $this->json([
                 'code' => 'ARTICLE_NOT_FOUND'
-            ], Response::HTTP_BAD_REQUEST);
+            ], Response::HTTP_NOT_FOUND);
         }
         $comment = new Comment($article);
         $comment->setContent($commentData['content']);
